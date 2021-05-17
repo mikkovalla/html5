@@ -1,10 +1,11 @@
 import Participant from './Participant'
+import './ParticipantList.css'
 
 const ParticipantList = ({ participants }) => {
     return (
         <div className="listing">
             <h2>List of participants</h2>
-            <table className="participantsTable">
+            <table className="participantstable">
                 <thead>
                     <tr>
                         <th className="name">

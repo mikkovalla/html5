@@ -1,3 +1,5 @@
+import './Participant.css'
+
 const Participant = (props) => {
     return (
         <tr key={props.person.cell}>

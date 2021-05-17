@@ -1,5 +1,6 @@
 .App {
-  margin: auto;
-  background-color: blanchedalmond;
+  margin: 0 auto;
+  background-color: #f4f4ec;
   height: 100%;
+  width: 980px;
 }
