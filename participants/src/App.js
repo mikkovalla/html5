@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const App = () => {
   
-  const [people, peopleData] = useState({ participants: [] })
+  const [people, peopleData] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
