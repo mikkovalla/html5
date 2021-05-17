@@ -1,10 +1,12 @@
 import Participant from './Participant'
+import ParticipantForm from './ParticipantForm'
 import './ParticipantList.css'
 
 const ParticipantList = ({ participants }) => {
     return (
         <div className="listing">
             <h2>List of participants</h2>
+            <ParticipantForm />
             <table className="participantstable">
                 <thead>
                     <tr>

@@ -39,6 +39,10 @@ h2{
     width: 30%;
 }
 
+.participantstable .button{
+    width: 20%;
+}
+
 thead tr{
     font-size: 15px;
     line-height: 15px;
