@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header'
+import ParticipantList from './components/ParticipantList'
 import axios from 'axios'
 
 const App = () => {
@@ -8,19 +9,21 @@ const App = () => {
   const [people, peopleData] = useState([])
 
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchParticipants() {
       const result = await axios(
-        'https://randomuser.me/api/?results=20'
-      );
-        peopleData(result.results)        
+        'https://randomuser.me/api/?results=20',
+      )
+        peopleData(result.data.results)              
     }
-    fetchData()
-  }, [])
+    fetchParticipants();
+  }, []);
 
+  console.log('People: ', people)
 
   return (
     <div className="App">
       <Header />
+      <ParticipantList participants={ people }/>
     </div>
   );
 }

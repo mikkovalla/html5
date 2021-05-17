@@ -1,9 +1,9 @@
 const Participant = (props) => {
     return (
-        <tr key={props.id} id={props.id}>
-            <td >{props.name}</td>
-            <td>{props.email}</td>
-            <td>{props.number}</td>
+        <tr key={props.person.cell}>
+            <td>{props.person.name.first} {props.person.name.last}</td>
+            <td>{props.person.email}</td>
+            <td>{props.person.phone}</td>
         </tr>
     )
 }
