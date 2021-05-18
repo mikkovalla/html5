@@ -1,23 +1,38 @@
 import './EditParticipant.css'
 
 const EditParticipant = ( person ) => {
-    
-    inputChange = (event) => {
-        person.updateParticipant({[event.target.name]: event.target.value})
+
+    const updateParticipantDetails = (id, name, email, phoneNumber) => {
+        let updatedDetails = person.participants.map((value, i) => {
+            if(i === id) {
+                value.name = name
+                value.email = email
+                value.phoneNumber = phoneNumber
+            }
+            return value
+        })
+        person.updateParticipant(updatedDetails)
+    }
+
+    const cancelUpdate = () => {
+        return person.updateParticipant()
     }
     
     return (
-        <tr key={this.props.id} id={this.props.id} className='form'>
-                <td className="name">
-                    <input type="text" name="name" value={this.state.name} onChange={this.inputChanged} placeholder="Full name" />
-                </td>  
-                <td className="email">
-                    <input type="email" name="email" value={this.state.email} onChange={this.inputChanged} placeholder="E-mail address" />
-                </td>
-                <td className="number">
-                    <input type="text" name="number" value={this.state.number} onChange={this.inputChanged} placeholder="Phone number" />
-                </td>
-                <td className="btn"><button onClick={() => this.props.cancelPart(this.props.id)} className="cancel">Cancel</button><button className="save" onClick={() => this.props.updatePart(this.props.id, this.state.name, this.state.email, this.state.number)}>Save</button></td>
+        <tr key={person.person.id} id={person.person.id} className='form'>
+            <td className="name">
+                <input type="text" name="name" value={person.person.name} onChange={event => person.updateParticipant(event.target.value)} placeholder="Full name" />
+            </td>  
+            <td className="email">
+                <input type="email" name="email" value={person.person.email} onChange={event => person.updateParticipant(event.target.value)} placeholder="E-mail address" />
+            </td>
+            <td className="phoneNumber">
+                <input type="text" name="phoneNumber" value={person.person.phoneNumber} onChange={event => person.updateParticipant(event.target.value)} placeholder="Phone number" />
+            </td>
+            <td className="btn">
+                <button className="cancelUpdate" onClick={() => cancelUpdate(person.person.id)}>Cancel</button>
+                <button className="updateParticipantDetails" onClick={() => updateParticipantDetails(person.person.id, person.person.name, person.person.email, person.person.phoneNumber)}>Save</button>
+            </td>
         </tr>
     )
 }
