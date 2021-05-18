@@ -2,7 +2,7 @@ import Participant from './Participant'
 import ParticipantForm from './ParticipantForm'
 import './ParticipantList.css'
 
-const ParticipantList = ({ participants, removeParticipant }) => {
+const ParticipantList = ({ participants, removeParticipant, updateParticipant }) => {
     return (
         <div className="listing">
             <h2>List of participants</h2>
@@ -23,7 +23,7 @@ const ParticipantList = ({ participants, removeParticipant }) => {
                 </thead>
                 <tbody>
                     {participants.map((person) =>
-                    <Participant person={ person } participants={ participants } removeParticipant={ removeParticipant }/>
+                    <Participant person={ person } participants={ participants } removeParticipant={ removeParticipant } updateParticipant={ updateParticipant }/>
                     )}
                 </tbody>        
             </table>

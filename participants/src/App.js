@@ -13,17 +13,25 @@ const App = () => {
       const result = await axios(
         'https://randomuser.me/api/?results=20',
       )
-        peopleData(result.data.results)              
+
+      let participants = result.data.results.map((item, i) => {
+        return {
+          id: i,
+          name: `${item.name.first} ${item.name.last}`,
+          email: item.email,
+          phoneNumber: item.phone
+        }
+      })
+        peopleData(participants)              
     }
     fetchParticipants();
   }, []);
 
-  console.log('Person: ', people)
-
+  console.log('People: ', people)
   return (
     <div className="App">
       <Header />
-      <ParticipantList participants={ people } removeParticipant={ peopleData }/>
+      <ParticipantList participants={ people } removeParticipant={ peopleData } updateParticipant= { peopleData }/>
     </div>
   );
 }
