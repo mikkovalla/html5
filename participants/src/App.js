@@ -18,12 +18,12 @@ const App = () => {
     fetchParticipants();
   }, []);
 
-  console.log('People: ', people)
+  console.log('Person: ', people)
 
   return (
     <div className="App">
       <Header />
-      <ParticipantList participants={ people }/>
+      <ParticipantList participants={ people } removeParticipant={ peopleData }/>
     </div>
   );
 }
