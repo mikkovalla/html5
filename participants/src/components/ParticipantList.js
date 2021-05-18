@@ -1,5 +1,6 @@
 import Participant from './Participant'
 import ParticipantForm from './ParticipantForm'
+import EditParticipant from './EditParticipant'
 import './ParticipantList.css'
 
 const ParticipantList = ({ participants, removeParticipant, updateParticipant }) => {
@@ -22,8 +23,11 @@ const ParticipantList = ({ participants, removeParticipant, updateParticipant })
                     </tr>
                 </thead>
                 <tbody>
-                    {participants.map((person) =>
-                    <Participant person={ person } participants={ participants } removeParticipant={ removeParticipant } updateParticipant={ updateParticipant }/>
+                    {participants.map((person) => 
+                        {
+                            return person.edit === false ? <Participant person={ person } participants={ participants } removeParticipant={ removeParticipant } updateParticipant={ updateParticipant }/>
+                            : <EditParticipant person={ person } participants={ participants } updateParticipant={ updateParticipant }/>
+                        }
                     )}
                 </tbody>        
             </table>

@@ -19,7 +19,8 @@ const App = () => {
           id: i,
           name: `${item.name.first} ${item.name.last}`,
           email: item.email,
-          phoneNumber: item.phone
+          phoneNumber: item.phone,
+          edit: false
         }
       })
         peopleData(participants)              

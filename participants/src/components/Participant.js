@@ -1,9 +1,7 @@
 import { FaPen, FaTrash } from "react-icons/fa"
 import './Participant.css'
-import EditParticipant from './EditParticipant'
 
 const Participant = ( person ) => {
-    console.log('Ppp: ', person)
     //delete participant
     const onDelete = () => {
         const filteredParticipants = person.participants.filter((p) => p.id !== person.person.id)
@@ -11,10 +9,11 @@ const Participant = ( person ) => {
     }
 
     const onEdit = () => {
-        console.log('CLICKED')
-        return (
-            <EditParticipant person={ person }/>
-        )
+        let editParticipants = person.participants.map((value, i) => {
+            if(i === person.person.id) value.edit = true
+            return value
+        })
+        person.updateParticipant(editParticipants)
     }
 
     return (

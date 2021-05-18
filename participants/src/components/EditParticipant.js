@@ -15,7 +15,13 @@ const EditParticipant = ( person ) => {
     }
 
     const cancelUpdate = () => {
-        return person.updateParticipant()
+        let updateEdit = person.participants.map((value, i) => {
+            if(i === person.person.id) {
+                value.edit = false
+            }
+            return value
+        })
+        person.updateParticipant(updateEdit)
     }
     
     return (
@@ -30,7 +36,7 @@ const EditParticipant = ( person ) => {
                 <input type="text" name="phoneNumber" value={person.person.phoneNumber} onChange={event => person.updateParticipant(event.target.value)} placeholder="Phone number" />
             </td>
             <td className="btn">
-                <button className="cancelUpdate" onClick={() => cancelUpdate(person.person.id)}>Cancel</button>
+                <button className="cancelUpdate" onClick={cancelUpdate}>Cancel</button>
                 <button className="updateParticipantDetails" onClick={() => updateParticipantDetails(person.person.id, person.person.name, person.person.email, person.person.phoneNumber)}>Save</button>
             </td>
         </tr>
