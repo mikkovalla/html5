@@ -2,18 +2,6 @@ import './EditParticipant.css'
 
 const EditParticipant = ( person ) => {
 
-    const updateParticipantDetails = (id, name, email, phoneNumber) => {
-        let updatedDetails = person.participants.map((value, i) => {
-            if(i === id) {
-                value.name = name
-                value.email = email
-                value.phoneNumber = phoneNumber
-            }
-            return value
-        })
-        person.updateParticipant(updatedDetails)
-    }
-
     const cancelUpdate = () => {
         let updateEdit = person.participants.map((value, i) => {
             if(i === person.person.id) {
@@ -23,21 +11,44 @@ const EditParticipant = ( person ) => {
         })
         person.updateParticipant(updateEdit)
     }
+
+    const inputValue = (event) => {
+        let updateEdit = person.participants.map((property, i) => {
+            if(i === person.person.id) {
+            property[event.target.name] = event.target.value
+            }
+            return property
+        })
+        person.updateParticipant(updateEdit)
+    }
+
+    const saveParticipant = (name, email, phoneNumber) => {
+        let save = person.participants.map((property, i) => {
+            if(i === person.person.id) {
+                property.name = name
+                property.email = email
+                property.phoneNumber = phoneNumber
+                property.edit = false
+            }
+            return property
+        })
+        person.updateParticipant(save)
+    }
     
     return (
         <tr key={person.person.id} id={person.person.id} className='form'>
             <td className="name">
-                <input type="text" name="name" value={person.person.name} onChange={event => person.updateParticipant(event.target.value)} placeholder="Full name" />
+                <input type="text" name="name" value={person.person.name} onChange={inputValue} placeholder="Full name" />
             </td>  
             <td className="email">
-                <input type="email" name="email" value={person.person.email} onChange={event => person.updateParticipant(event.target.value)} placeholder="E-mail address" />
+                <input type="email" name="email" value={person.person.email} onChange={inputValue} placeholder="E-mail address" />
             </td>
             <td className="phoneNumber">
-                <input type="text" name="phoneNumber" value={person.person.phoneNumber} onChange={event => person.updateParticipant(event.target.value)} placeholder="Phone number" />
+                <input type="text" name="phoneNumber" value={person.person.phoneNumber} onChange={inputValue} placeholder="Phone number" />
             </td>
             <td className="btn">
                 <button className="cancelUpdate" onClick={cancelUpdate}>Cancel</button>
-                <button className="updateParticipantDetails" onClick={() => updateParticipantDetails(person.person.id, person.person.name, person.person.email, person.person.phoneNumber)}>Save</button>
+                <button className="saveParticipant" onClick={() => saveParticipant(person.person.name, person.person.email, person.person.phoneNumber)}>Save</button>
             </td>
         </tr>
     )
