@@ -36,7 +36,7 @@ const EditParticipant = ( person ) => {
     }
     
     return (
-        <tr key={person.person.id} id={person.person.id} className='form'>
+        <tr key={person.person.id} id={person.person.id} className='editParticipant'>
             <td className="name">
                 <input type="text" name="name" value={person.person.name} onChange={inputValue} placeholder="Full name" />
             </td>  
@@ -46,8 +46,10 @@ const EditParticipant = ( person ) => {
             <td className="phoneNumber">
                 <input type="text" name="phoneNumber" value={person.person.phoneNumber} onChange={inputValue} placeholder="Phone number" />
             </td>
-            <td className="btn">
+            <td>
                 <button className="cancelUpdate" onClick={cancelUpdate}>Cancel</button>
+            </td>
+            <td>
                 <button className="saveParticipant" onClick={() => saveParticipant(person.person.name, person.person.email, person.person.phoneNumber)}>Save</button>
             </td>
         </tr>
