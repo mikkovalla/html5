@@ -7,7 +7,7 @@ const ParticipantList = ({ participants, removeParticipant, updateParticipant })
     return (
         <div className="listing">
             <h2>List of participants</h2>
-            <ParticipantForm />
+            <ParticipantForm person={ participants } updateParticipant={ updateParticipant }/>
             <table className="participantstable">
                 <thead>
                     <tr>

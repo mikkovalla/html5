@@ -2,8 +2,11 @@ import './EditParticipant.css'
 
 const EditParticipant = ( person ) => {
 
+    
+
     const cancelUpdate = () => {
-        let updateEdit = person.participants.map((value, i) => {
+        const oldState = person.participants
+        let updateEdit = oldState.map((value, i) => {
             if(i === person.person.id) {
                 value.edit = false
             }
