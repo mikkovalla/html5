@@ -7,7 +7,7 @@ const ParticipantList = ({ participants, removeParticipant, updateParticipant })
     return (
         <div className="listing">
             <h2>List of participants</h2>
-            <ParticipantForm person={ participants } updateParticipant={ updateParticipant }/>
+            <ParticipantForm person={ participants } />
             <table className="participantstable">
                 <thead>
                     <tr>
@@ -26,7 +26,7 @@ const ParticipantList = ({ participants, removeParticipant, updateParticipant })
                     {participants.map((person) => 
                         {
                             return person.edit === false ? <Participant person={ person } participants={ participants } removeParticipant={ removeParticipant } updateParticipant={ updateParticipant }/>
-                            : <EditParticipant person={ person } participants={ participants } updateParticipant={ updateParticipant }/>
+                            : <EditParticipant person={ person } participants={ participants } updateParticipant={ updateParticipant } />
                         }
                     )}
                 </tbody>        

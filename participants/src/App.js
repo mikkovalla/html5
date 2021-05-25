@@ -23,16 +23,15 @@ const App = () => {
           edit: false
         }
       })
-        peopleData(participants)              
+        peopleData(participants)            
     }
     fetchParticipants();
   }, []);
 
-  console.log('People: ', people)
   return (
     <div className="App">
       <Header />
-      <ParticipantList participants={ people } removeParticipant={ peopleData } updateParticipant= { peopleData }/>
+      <ParticipantList participants={ people } removeParticipant={ peopleData } updateParticipant= { peopleData } />
     </div>
   );
 }

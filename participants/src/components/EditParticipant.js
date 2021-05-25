@@ -1,59 +1,66 @@
+import { useState } from 'react'
 import './EditParticipant.css'
 
 const EditParticipant = ( person ) => {
 
-    
-
-    const cancelUpdate = () => {
-        const oldState = person.participants
-        let updateEdit = oldState.map((value, i) => {
-            if(i === person.person.id) {
-                value.edit = false
-            }
-            return value
-        })
-        person.updateParticipant(updateEdit)
+    const initialState = {
+        name: person.person.name,
+        email: person.person.email,
+        phoneNumber: person.person.phoneNumber
     }
 
-    const inputValue = (event) => {
-        let updateEdit = person.participants.map((property, i) => {
+    const [init] = useState(initialState)
+
+    const cancelUpdate = () => {
+        let cancel = person.participants.map((property, i) => {
             if(i === person.person.id) {
-            property[event.target.name] = event.target.value
+            property.name = init.name
+            property.email = init.email
+            property.phoneNumber = init.phoneNumber    
+            property.edit = false
             }
             return property
         })
-        person.updateParticipant(updateEdit)
+        person.updateParticipant(cancel)
     }
 
-    const saveParticipant = (name, email, phoneNumber) => {
+    const handleChange = (e) => {
+        let updatePart = person.participants.map((property, i) => {
+            if(i === person.person.id) {
+                property[e.target.name] = e.target.value              
+            }
+            return property 
+        })
+        person.updateParticipant(updatePart)
+    }
+
+    const saveParticipant = () => {
         let save = person.participants.map((property, i) => {
             if(i === person.person.id) {
-                property.name = name
-                property.email = email
-                property.phoneNumber = phoneNumber
                 property.edit = false
             }
+            console.log('property', property)
             return property
         })
         person.updateParticipant(save)
     }
     
     return (
-        <tr key={person.person.id} id={person.person.id} className='editParticipant'>
+        <tr key={person.person.id} id={person.person.id} className='editParticipant'>            
             <td className="name">
-                <input type="text" name="name" value={person.person.name} onChange={inputValue} placeholder="Full name" />
+                <input type="text" name="name" value={person.person.name} onChange={handleChange} placeholder="Full name" />
             </td>  
             <td className="email">
-                <input type="email" name="email" value={person.person.email} onChange={inputValue} placeholder="E-mail address" />
+                <input type="email" name="email" value={person.person.email} onChange={handleChange} placeholder="E-mail address" />
             </td>
             <td className="phoneNumber">
-                <input type="text" name="phoneNumber" value={person.person.phoneNumber} onChange={inputValue} placeholder="Phone number" />
+                <input type="text" name="phoneNumber" value={person.person.phoneNumber} onChange={handleChange} placeholder="Phone number" />
             </td>
             <td>
                 <button className="cancelUpdate" onClick={cancelUpdate}>Cancel</button>
             </td>
             <td>
-                <button className="saveParticipant" onClick={() => saveParticipant(person.person.name, person.person.email, person.person.phoneNumber)}>Save</button>
+                <button className="saveParticipant" onClick={saveParticipant}>Save</button>
             </td>
         </tr>
     )
