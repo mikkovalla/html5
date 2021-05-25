@@ -31,7 +31,7 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <ParticipantList participants={ people } removeParticipant={ peopleData } updateParticipant= { peopleData } />
+      <ParticipantList participant={ people } participants={ people } removeParticipant={ peopleData } updateParticipant= { peopleData } />
     </div>
   );
 }

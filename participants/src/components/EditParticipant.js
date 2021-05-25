@@ -12,7 +12,7 @@ const EditParticipant = ( person ) => {
     const [init] = useState(initialState)
 
     const cancelUpdate = () => {
-        let cancel = person.participants.map((property, i) => {
+        let cancel = person.participants.map((property, i) => {            
             if(i === person.person.id) {
             property.name = init.name
             property.email = init.email
@@ -39,7 +39,6 @@ const EditParticipant = ( person ) => {
             if(i === person.person.id) {
                 property.edit = false
             }
-            console.log('property', property)
             return property
         })
         person.updateParticipant(save)
