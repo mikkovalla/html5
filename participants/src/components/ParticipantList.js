@@ -20,6 +20,36 @@ const ParticipantList = ({participants, updateParticipant, removeParticipant}) =
         updateParticipant(finalArray)
     }
 
+    const sortEmails = () => {
+        const sortByEmail =
+            [...participants].sort((a, b) => {
+                if(a.email.toLowerCase() < b.email.toLowerCase()) return -1;
+                if(a.email.toLowerCase() > b.email.toLowerCase()) return 1;
+                return 0;
+            });
+        const finalArray = sortByEmail.map((value, i) => 
+            {
+                value.id = i
+                return value
+            })
+        updateParticipant(finalArray)
+    }
+
+    const sortNumbers = () => {
+        const sortByNumber =
+            [...participants].sort((a, b) => {
+                if(parseInt(a.phoneNumber) < parseInt(b.phoneNumber)) return -1;
+                if(parseInt(a.phoneNumber) > parseInt(b.phoneNumber)) return 1;
+                return 0;
+            });
+        const finalArray = sortByNumber.map((value, i) => 
+            {
+                value.id = i
+                return value
+            })
+        updateParticipant(finalArray)
+    }
+
 
     return (
         <div className="listing">
@@ -31,10 +61,10 @@ const ParticipantList = ({participants, updateParticipant, removeParticipant}) =
                         <th className="name" onClick={sortNames}>
                             Name
                         </th>
-                        <th className="email">
+                        <th className="email" onClick={sortEmails}>
                             E-mail address
                         </th>
-                        <th className="phoneNumber">
+                        <th className="phoneNumber" onClick={sortNumbers}>
                             Phone number
                         </th>
                     </tr>

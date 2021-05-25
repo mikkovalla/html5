@@ -39,6 +39,9 @@ const ParticipantForm = ({participants, updateParticipant}) => {
         if(errors.length > 0) {
             setErrorMsg(errors)
             console.log('Errors:', errorMsg)
+            setEmail("")
+            setName("")
+            setPhoneNumber("")
         } else {
                 alert('Participant succesfully added!')
                 const newParticipant = {
@@ -48,9 +51,11 @@ const ParticipantForm = ({participants, updateParticipant}) => {
                     phoneNumber: phoneNumber.phoneNumber,
                     edit: false
                 }
-                console.log(newParticipant)
                 updateParticipant(participants => [...participants, newParticipant])
-            }
+                setEmail("")
+                setName("")
+                setPhoneNumber("")
+        }
     }
 
     return (
