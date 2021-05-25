@@ -6,7 +6,7 @@ Deployment to [Surge.sh](https://surge.sh/)
 
 ---
 ### link to app
-[Link to surge to be added here](https://surge.sh)
+[App Demo](secret-behavior.surge.sh)
 
 ---
 ### Install and run
